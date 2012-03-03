@@ -22,7 +22,11 @@ $ ->
     image_url = response["largeImageUrl"]
     zappos_url = response["productUrl"]
 
-    $("#pants-location").prepend("<div class='span3 pull-left'><a href='#{zappos_url}'><img src='#{image_url}' /></a></div>")
+    brand = response["brandName"]
+    name = response["productName"]
+    price = response["price"]
+
+    $("#pants-location").prepend("<li class='span3'><div class='thumbnail'><a href='#{zappos_url}'><img src='#{image_url}' /></a> <div class='caption'> <h5>#{name}</h5> <p>#{price}, by #{brand}</p> </div> </div></li>")
 
     if $("#pants-location").children().size() > 4
       $("#pants-location").children(":gt(3)").remove()
